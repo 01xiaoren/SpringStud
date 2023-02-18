@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
 
+//集合注入
 public class Test01 {
     @Test
     public void testGetBean() {
