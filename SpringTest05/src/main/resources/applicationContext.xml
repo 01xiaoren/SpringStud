@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+">
+
+    <!--   定义公共集合-->
+    <util:list id="outList">
+        <!-- 生名多个book对象-->
+        <bean id="b1" class="com.xiaoren.bean.User" p:bname="java" p:author="1"></bean>
+        <bean id="b2" class="com.xiaoren.bean.User" p:bname="mysql" p:author="2"/>
+        <bean id="b3" class="com.xiaoren.bean.User" p:bname="linux" p:author="3"/>
+    </util:list>
+    <bean id="student" class="com.xiaoren.bean.Student">
+        <!--     数组属性注入-->
+        <property name="books">
+            <array>
+                <value>java</value>
+                <value>mysql</value>
+                <value>linux</value>
+            </array>
+        </property>
+        <!--  set集合注入-->
+        <property name="bookSet">
+            <set>
+                <value>java</value>
+                <value>mysql</value>
+                <value>linux</value>
+            </set>
+        </property>
+        <!--  map集合注入-->
+        <property name="bookMap">
+            <map>
+                <entry key="java" value="周一"></entry>
+                <entry key="mysql" value="周二"/>
+                <entry key="linux" value="周三"/>
+            </map>
+        </property>
+        <!--  list集合注入-->
+        <property name="bookList">
+            <list>
+                <value>java</value>
+                <value>mysql</value>
+                <value>linux</value>
+            </list>
+        </property>
+        <!--        &lt;!&ndash;  list对象集合注入&ndash;&gt;-->
+        <!--        <property name="bookList2">-->
+        <!--            <list>-->
+        <!--                <ref bean="b1"></ref>-->
+        <!--                <ref bean="b2"/>-->
+        <!--                <ref bean="b3"/>-->
+        <!--            </list>-->
+        <!--        </property>-->
+        <property name="bookList2" ref="outList"></property>
+    </bean>
+
+</beans>
