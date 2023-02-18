@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.xiaoren.bean.User" init-method="initUser" destroy-method="destoryUser">
+        <property name="username" value="小明"/>
+        <property name="userid" value="1"/>
+        <property name="password" value="rlvmepa"/>
+    </bean>
+
+    <!--    2 配置后置处理器,对容器中的所有bean添加后置处理器的生命周期
+-->
+    <bean id="bean" class="com.xiaoren.bean.BeanPostProcesser.MyBeanProcesser"/>
+</beans>
