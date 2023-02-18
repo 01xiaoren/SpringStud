@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+      1 通过set方法给对象属性赋值
+      property 就是在使用set方法实现依赖注入
+      new User().setUserid();
+      -->
+    <bean id="user1" class="com.xiaoren.bean.User">
+        <property name="userid" value="1"/>
+        <property name="username" value="张三"/>
+        <property name="password" value="beufiqlwe"/>
+    </bean>
+
+    <!--
+    constructor-arg 就是在使用构造方法实现依赖注入
+    constructor-arg 的个数必须和某个构造方法的参数个数向对应
+    name指的是参数名
+    index指的是参数的索引
+    value指的是参数值
+    new User(1,"","");
+    -->
+    <bean id="user2" class="com.xiaoren.bean.User">
+        <constructor-arg name="userid" value="2"/>
+        <constructor-arg name="username" value="李四"/>
+        <constructor-arg name="password" value="iecnfoqe"/>
+    </bean>
+    <bean id="user3" class="com.xiaoren.bean.User">
+        <constructor-arg index="0" value="3"/>
+        <constructor-arg index="1" value="王五"/>
+        <constructor-arg index="2" value="dpinco9e"/>
+    </bean>
+
+    <!--    根据首段的xmlns配置对象-->
+    <bean id="user4" class="com.xiaoren.bean.User" p:userid="4" p:username="晓东" p:password="kemldw"></bean>
+    <bean id="user5" class="com.xiaoren.bean.User" c:userid="5" c:username="小西" c:password="222222" ></bean>
+
+</beans>
