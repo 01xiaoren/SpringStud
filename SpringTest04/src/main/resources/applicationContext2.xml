@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--告诉容器准备一个Date对象-->
+    <bean id="date1" class="java.util.Date"></bean>
+    <bean id="mouse1" class="com.xiaoren.bean.Mouse">
+        <property name="name" value="Jerry"></property>
+        <!--bean引用引用外部bean-->
+        <property name="birthdate" ref="date1"></property>
+    </bean>
+
+    <!--    <bean id="cat" class="com.xiaoren.bean.Cat">-->
+    <!--        <property name="name" value="小猫"/>-->
+    <!--        <property name="mouse1" ref="mouse1"/>-->
+    <!--    </bean>-->
+
+    <bean id="cat1" class="com.xiaoren.bean.Cat">
+        <!--  引用内部bean-->
+        <property name="name" value="小猫"/>
+        <property name="mouse1">
+            <bean class="com.xiaoren.bean.Mouse">
+                <property name="name" value="Jerry2"/>
+                <property name="birthdate">
+                    <bean class="java.util.Date"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="mouse2" class="com.xiaoren.bean.Mouse"></bean>
+    <bean id="cat2" class="com.xiaoren.bean.Cat">
+        <property name="name" value="Tom"/>
+        <!--    级联引入-->
+        <property name="mouse1" ref="mouse2"/>
+        <!--用反射调用get*** 方法,获得对象之后,再赋值-->
+        <property name="mouse1.name" value="Jerry3"/>
+        <property name="mouse1.birthdate">
+            <bean class="java.util.Date"/>
+        </property>
+    </bean>
+</beans>
