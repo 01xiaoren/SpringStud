@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+      id    对象的id
+      class 类的全路径名
+            name 和id类似,一般不用
+            scope 控制对象单例多例和使用范围
+                singleton作用域(scope 默认值), Spring IOC容器中只会存在一个共享的bean实例
+                prototype作用域部署的bean，每一次获取都会产生一个新的bean实例，相当与一个new的操作
+                request表示该针对每一次HTTP请求都会产生一个新的bean，同时该bean仅在当前HTTP request内有效
+                session作用域表示该针对每一次HTTP请求都会产生一个新的bean，同时该bean仅在当前HTTP session内有效
+                global session作用域类似于标准的HTTP Session作用域，不过它仅仅在基于portlet的web应用中才有意义
+            lazy-init 懒加载 调用getBean的时候再去实例化对象
+
+    -->
+    <bean id="user" class="com.xiaoren.bean.User" name="user1" scope="prototype" lazy-init="true"></bean>
+</beans>
