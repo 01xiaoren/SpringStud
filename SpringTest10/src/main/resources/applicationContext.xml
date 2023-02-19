@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+">
+    <!--添加注解扫描,扫描指定的包,将包中的所有有注解的类实例化
+    base-package 后面放要扫描的包
+    如果有多个包需要扫描,可以使用逗号隔开  com.msb.bean,com.msb.service
+    或者可以写上一层包路径  com.msb
+    可以通过注解指定bean的id@Component("user1")
+    如果不指定,则id默认是 类名首字母小写
+    -->
+<!--    <context:component-scan base-package="com.xiaoren.bean"></context:component-scan>-->
+
+    <!--
+    use-default-filters="false"
+    默认值为true 代表使用默认的扫描过滤器
+    默认的扫描过滤器会识别并包含 @Component @Controller @Service @Repository 四个注解
+    不使用默认的filter,使用我们自己的filter
+    -->
+    <!--控制只扫描Controller注解-->
+<!--    <context:component-scan base-package="com.xiaoren" use-default-filters="false">-->
+<!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+<!--    </context:component-scan>-->
+    <!--控制不扫描Controller注解-->
+    <context:component-scan base-package="com.xiaoren" use-default-filters="true">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+</beans>
